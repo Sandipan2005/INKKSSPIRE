@@ -1040,7 +1040,7 @@
               >
                 <!-- Updated Finishing Icon (Grid/Squares style) -->
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25A2.25 2.25 0 0113.5 8.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25A2.25 2.25 0 0113.5 8.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" />
                 </svg>
                 <span class="text-xs font-semibold tracking-wider uppercase"
                   >FINISHING</span
@@ -2426,14 +2426,17 @@
               Join a Newsletter
             </h4>
             <p class="text-sm text-gray-600 mb-2">Your Email</p>
-            <form action="#" class="flex items-center gap-2">
+            <form action="#" class="flex items-center gap-2" id="newsletter-form">
               <input
                 type="email"
+                name="email"
                 placeholder="Enter Your Email"
                 class="newsletter-input flex-grow"
+                required
               />
-              <button type="submit" class="btn-footer-submit">Submit</button>
+              <button type="submit" id="newsletter-submit-btn" class="btn-footer-submit">Submit</button>
             </form>
+            <p id="newsletter-status" class="text-sm mt-2 hidden"></p>
           </div>
         </div>
 
@@ -2492,14 +2495,12 @@
     <script>
       // Single Page App Navigation Logic
       function showPage(pageName) {
-        // Get section elements
-        const heroSection = document.getElementById("hero-section");
+        const homeSection = document.getElementById("hero-section");
         const productsSection = document.getElementById("products-section");
         const reviewsGroup = document.getElementById("reviews-group");
         const ctaSection = document.getElementById("cta-section");
         const contactSection = document.getElementById("contact-section");
 
-        // Get nav elements
         const navHome = document.getElementById("nav-home");
         const navProducts = document.getElementById("nav-products");
         const navContact = document.getElementById("nav-contact");
@@ -2509,7 +2510,7 @@
 
         if (pageName === "contact") {
           // CONTACT PAGE: Only Show Contact
-          heroSection.classList.add("hidden");
+          homeSection.classList.add("hidden");
           productsSection.classList.add("hidden");
           reviewsGroup.classList.add("hidden");
           ctaSection.classList.add("hidden");
@@ -2523,7 +2524,7 @@
         } 
         else if (pageName === "products") {
           // PRODUCTS PAGE: Show Products + CTA only
-          heroSection.classList.add("hidden");
+          homeSection.classList.add("hidden");
           reviewsGroup.classList.add("hidden");
           contactSection.classList.add("hidden");
           
@@ -2539,7 +2540,7 @@
           // HOME PAGE: Show everything except Contact
           contactSection.classList.add("hidden");
           
-          heroSection.classList.remove("hidden");
+          homeSection.classList.remove("hidden");
           productsSection.classList.remove("hidden");
           reviewsGroup.classList.remove("hidden");
           ctaSection.classList.remove("hidden");
@@ -2615,7 +2616,7 @@
         const viewLessBtn = document.getElementById("view-less-btn");
 
         if (viewAllBtn && viewLessBtn) {
-          // View All Click -> Show products, Hide View All, Show View Less
+          // View All Click -> Show more products, Hide View All button, Show View Less button
           viewAllBtn.addEventListener("click", function (e) {
             e.preventDefault();
 
@@ -2631,7 +2632,7 @@
             viewLessBtn.classList.add("inline-block");
           });
 
-          // View Less Click -> Hide products, Hide View Less, Show View All
+          // View Less Click -> Hide extra products, Hide View Less button, Show View All button
           viewLessBtn.addEventListener("click", function (e) {
             e.preventDefault();
 
@@ -2751,6 +2752,66 @@
                 }
             });
         }
+
+        // --- Newsletter Form Submission Logic (AJAX/Fetch) ---
+        const newsletterForm = document.getElementById("newsletter-form");
+        const newsletterStatus = document.getElementById("newsletter-status");
+        const newsletterSubmitBtn = document.getElementById("newsletter-submit-btn");
+
+        if (newsletterForm) {
+            newsletterForm.addEventListener("submit", async function (e) {
+                e.preventDefault();
+                
+                // Disable button while sending
+                newsletterSubmitBtn.disabled = true;
+                newsletterSubmitBtn.textContent = "...";
+                newsletterStatus.classList.add("hidden");
+                newsletterStatus.classList.remove("text-green-600", "text-red-600");
+
+                // 1. Prepare Data
+                const formData = new FormData(newsletterForm);
+                // Add a hidden field to identify source if using same form ID
+                formData.append("source", "Footer Newsletter"); 
+                
+                // 2. Send to Formspree (Using same endpoint as contact form for simplicity)
+                // Replace YOUR_FORM_ID with your actual ID
+                const formEndpoint = "https://formspree.io/f/YOUR_FORM_ID"; 
+
+                try {
+                    const response = await fetch(formEndpoint, {
+                        method: "POST",
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+
+                    if (response.ok) {
+                        newsletterStatus.textContent = "Subscribed!";
+                        newsletterStatus.classList.add("text-green-600");
+                        newsletterStatus.classList.remove("hidden");
+                        newsletterForm.reset();
+                    } else {
+                        const data = await response.json();
+                        if (Object.hasOwn(data, 'errors')) {
+                            newsletterStatus.textContent = "Error: " + data["errors"].map(error => error["message"]).join(", ");
+                        } else {
+                            newsletterStatus.textContent = "Oops! Error.";
+                        }
+                        newsletterStatus.classList.add("text-red-600");
+                        newsletterStatus.classList.remove("hidden");
+                    }
+                } catch (error) {
+                    newsletterStatus.textContent = "Oops! Network error.";
+                    newsletterStatus.classList.add("text-red-600");
+                    newsletterStatus.classList.remove("hidden");
+                } finally {
+                    newsletterSubmitBtn.disabled = false;
+                    newsletterSubmitBtn.textContent = "Submit";
+                }
+            });
+        }
+
       });
     </script>
   </body>
