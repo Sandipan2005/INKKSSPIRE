@@ -23,6 +23,17 @@
         color: #333;
         background-color: #ffffff;
         overflow-x: hidden; /* Prevent horizontal scroll */
+        padding-top: 80px; /* Add padding equal to header height */
+      }
+
+      /* Sticky Header Styles */
+      header {
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth easing for show/hide */
+        will-change: transform; /* Optimize for animations */
+      }
+      
+      header.header-hidden {
+        transform: translateY(-100%); /* Move header completely out of view */
       }
 
       h1,
@@ -37,25 +48,24 @@
 
       /* --- BUTTONS --- */
       .btn-golden {
-        background-color: #fde047; /* Gold-like yellow */
-        color: #1f2937; /* Dark text */
+        background-color: #fde047;
+        color: #1f2937;
         padding: 10px 24px;
         border-radius: 8px;
         font-family: "Lora", serif;
         font-weight: 500;
         transition: background-color 0.3s;
-        border: 1px solid #facc15; /* Gold border */
+        border: 1px solid #facc15;
         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
         cursor: pointer;
         display: inline-block;
       }
       .btn-golden:hover {
-        background-color: #facc15; /* Darker gold */
+        background-color: #facc15;
       }
-      /* Footer submit button is slightly different */
       .btn-footer-submit {
-        background-color: #fde047; /* Gold-like yellow */
-        color: #1f2937; /* Dark text */
+        background-color: #fde047;
+        color: #1f2937;
         padding: 10px 16px;
         border-radius: 8px;
         font-family: "Lora", serif;
@@ -71,7 +81,7 @@
       .btn-outline {
         background-color: transparent;
         color: #1f2937;
-        border: 1px solid #d1d5db; /* Gray border */
+        border: 1px solid #d1d5db;
         padding: 10px 24px;
         border-radius: 8px;
         font-family: "Lora", serif;
@@ -79,7 +89,7 @@
         transition: all 0.3s;
       }
       .btn-outline:hover {
-        background-color: #f9fafb; /* Light hover */
+        background-color: #f9fafb;
       }
 
       .btn-product-details {
@@ -98,14 +108,14 @@
       }
 
       .btn-product-enquire {
-        background-color: #fde047; /* Gold */
+        background-color: #fde047;
         color: #1f2937;
         padding: 8px 16px;
         border-radius: 6px;
         font-size: 14px;
         font-weight: 500;
         transition: all 0.3s;
-        border: 1px solid #facc15; /* Gold border */
+        border: 1px solid #facc15;
         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
       }
       .btn-product-enquire:hover {
@@ -115,7 +125,7 @@
       /* --- NAVIGATION --- */
       .nav-link {
         position: relative;
-        color: #374151; /* Gray-700 */
+        color: #374151;
         font-family: "Lora", serif;
         font-weight: 500;
         padding-bottom: 4px;
@@ -128,7 +138,7 @@
         left: 0;
         width: 0;
         height: 2px;
-        background-color: #facc15; /* Gold */
+        background-color: #facc15;
         transition: width 0.3s ease;
       }
       .nav-link:hover::after,
@@ -613,8 +623,8 @@
     </style>
   </head>
   <body class="bg-white flex flex-col min-h-screen">
-    <!-- Header: Added relative and z-50 to ensure it stays on top -->
-    <header class="w-full bg-white border-b border-gray-200 relative z-50">
+    <!-- Header: Fixed with z-50 to prevent overlap -->
+    <header id="main-header" class="w-full bg-white border-b border-gray-200 fixed top-0 left-0 z-50 transition-transform duration-300">
       <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-20">
           <!-- Logo -->
@@ -1909,167 +1919,6 @@
             </div>
           </div>
         </section>
-
-        <!-- Client Testimonials Section -->
-        <section class="w-full bg-gray-50 py-16 md:py-24">
-          <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <h2
-              class="font-heading text-4xl sm:text-5xl font-bold text-gray-900 text-center mb-12"
-            >
-              What Clients Tell About Our Products
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <!-- Testimonial Card 1 -->
-              <div
-                class="bg-white border border-gray-200 rounded-lg p-8 relative shadow-sm"
-              >
-                <span
-                  class="font-serif text-7xl text-amber-100 absolute top-4 left-6 z-0"
-                  >“</span
-                >
-                <div class="relative z-10">
-                  <p class="mt-8 text-gray-700">
-                    Pixel Bloom's AI models have transformed our business
-                    operations. The accuracy and efficiency of their image
-                    recognition models have significantly reduced our processing
-                    time. We highly recommend their services!
-                  </p>
-                  <div class="flex items-center gap-4 mt-6">
-                    <img
-                      class="w-14 h-14 rounded-full object-cover"
-                      src="https://placehold.co/100x100/e0e0e0/333?text=BC"
-                      alt="Bessie Cooper"
-                    />
-                    <div>
-                      <h4
-                        class="font-heading text-lg font-semibold text-gray-900"
-                      >
-                        Bessie Cooper
-                      </h4>
-                      <div class="flex text-yellow-400">
-                        <span>★</span><span class="ml-0.5">★</span
-                        ><span class="ml-0.5">★</span
-                        ><span class="ml-0.5">★</span
-                        ><span class="ml-0.5">★</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- Testimonial Card 2 -->
-              <div
-                class="bg-white border border-gray-200 rounded-lg p-8 relative shadow-sm"
-              >
-                <span
-                  class="font-serif text-7xl text-amber-100 absolute top-4 left-6 z-0"
-                  >“</span
-                >
-                <div class="relative z-10">
-                  <p class="mt-8 text-gray-700">
-                    Working with Pixel Bloom has been a game-changer for us.
-                    Their natural language processing models have enabled us to
-                    better understand and respond to customer queries, improving
-                    our overall customer
-                  </p>
-                  <div class="flex items-center gap-4 mt-6">
-                    <img
-                      class="w-14 h-14 rounded-full object-cover"
-                      src="https://placehold.co/100x100/e0e0e0/333?text=MR"
-                      alt="Michael Rodriguez"
-                    />
-                    <div>
-                      <h4
-                        class="font-heading text-lg font-semibold text-gray-900"
-                      >
-                        Michael Rodriguez
-                      </h4>
-                      <div class="flex text-yellow-400">
-                        <span>★</span><span class="ml-0.5">★</span
-                        ><span class="ml-0.5">★</span
-                        ><span class="ml-0.5">★</span
-                        ><span class="ml-0.5">★</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- Testimonial Card 3 -->
-              <div
-                class="bg-white border border-gray-200 rounded-lg p-8 relative shadow-sm"
-              >
-                <span
-                  class="font-serif text-7xl text-amber-100 absolute top-4 left-6 z-0"
-                  >“</span
-                >
-                <div class="relative z-10">
-                  <p class="mt-8 text-gray-700">
-                    The predictive analytics model from Pixel Bloom has provided
-                    us with invaluable insights, helping us make data-driven
-                    decisions that have boosted our sales and optimized our
-                    inventory management.
-                  </p>
-                  <div class="flex items-center gap-4 mt-6">
-                    <img
-                      class="w-14 h-14 rounded-full object-cover"
-                      src="https://placehold.co/100x100/e0e0e0/333?text=DL"
-                      alt="David Lee"
-                    />
-                    <div>
-                      <h4
-                        class="font-heading text-lg font-semibold text-gray-900"
-                      >
-                        David Lee
-                      </h4>
-                      <div class="flex text-yellow-400">
-                        <span>★</span><span class="ml-0.5">★</span
-                        ><span class="ml-0.5">★</span
-                        ><span class="ml-0.5">★</span
-                        ><span class="ml-0.5">★</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- Testimonial Card 4 -->
-              <div
-                class="bg-white border border-gray-200 rounded-lg p-8 relative shadow-sm"
-              >
-                <span
-                  class="font-serif text-7xl text-amber-100 absolute top-4 left-6 z-0"
-                  >“</span
-                >
-                <div class="relative z-10">
-                  <p class="mt-8 text-gray-700">
-                    Pixel Bloom's custom AI solution was exactly what we needed.
-                    Their team was professional, responsive, and delivered a
-                    product that exceeded our expectations. Our workflow has
-                    never been smoother.
-                  </p>
-                  <div class="flex items-center gap-4 mt-6">
-                    <img
-                      class="w-14 h-14 rounded-full object-cover"
-                      src="https://placehold.co/100x100/e0e0e0/333?text=ET"
-                      alt="Emily Thompson"
-                    />
-                    <div>
-                      <h4
-                        class="font-heading text-lg font-semibold text-gray-900"
-                      >
-                        Emily Thompson
-                      </h4>
-                      <div class="flex text-yellow-400">
-                        <span>★</span><span class="ml-0.5">★</span
-                        ><span class="ml-0.5">★</span
-                        ><span class="ml-0.5">★</span
-                        ><span class="ml-0.5">★</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
       </div>
 
       <!-- 4. CTA Section (Home & Products) -->
@@ -2464,6 +2313,50 @@
 
     <!-- JavaScript -->
     <script>
+      // Sticky Header Logic
+      let lastScrollTop = 0;
+      const header = document.getElementById('main-header');
+      let scrollTimeout;
+
+      window.addEventListener('scroll', () => {
+          const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+          // Clear previous timeout on every scroll event
+          clearTimeout(scrollTimeout);
+
+          if (scrollTop > lastScrollTop && scrollTop > 80) {
+              // SCROLL DOWN: Hide immediately
+              header.classList.add('header-hidden');
+          } else {
+              // SCROLL UP: Show immediately
+              header.classList.remove('header-hidden');
+              
+              // If not at the very top, hide after 2 seconds of no scrolling
+              if (scrollTop > 80) {
+                  scrollTimeout = setTimeout(() => {
+                      header.classList.add('header-hidden');
+                  }, 2000);
+              }
+          }
+          
+          lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+      });
+
+      // Keep header visible if hovering
+      header.addEventListener('mouseenter', () => {
+          clearTimeout(scrollTimeout);
+          header.classList.remove('header-hidden');
+      });
+      
+      header.addEventListener('mouseleave', () => {
+           const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+           if (scrollTop > 80) {
+               scrollTimeout = setTimeout(() => {
+                  header.classList.add('header-hidden');
+              }, 2000);
+           }
+      });
+
       // Single Page App Navigation Logic
       function showPage(pageName) {
         const homeSection = document.getElementById("hero-section");
