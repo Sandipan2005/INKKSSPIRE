@@ -2159,7 +2159,8 @@
                 We're here to help with any questions or feedback
               </p>
 
-              <form action="#" class="space-y-5">
+              <!-- Formspree Form -->
+              <form id="contact-form" class="space-y-5">
                 <div class="grid grid-cols-2 gap-4">
                   <div>
                     <label
@@ -2168,8 +2169,11 @@
                     >
                     <input
                       type="text"
+                      name="firstName"
+                      id="first-name"
                       placeholder="abc"
                       class="contact-input"
+                      required
                     />
                   </div>
                   <div>
@@ -2179,8 +2183,11 @@
                     >
                     <input
                       type="text"
+                      name="lastName"
+                      id="last-name"
                       placeholder="abc"
                       class="contact-input"
+                      required
                     />
                   </div>
                 </div>
@@ -2192,8 +2199,11 @@
                   >
                   <input
                     type="email"
+                    name="email"
+                    id="email"
                     placeholder="abc@gmail.com"
                     class="contact-input"
+                    required
                   />
                 </div>
 
@@ -2203,15 +2213,20 @@
                     >Message</label
                   >
                   <textarea
+                    name="message"
+                    id="message"
                     rows="4"
                     placeholder="I'd love to learn more about your services"
                     class="contact-input resize-none"
+                    required
                   ></textarea>
                 </div>
 
-                <button type="submit" class="btn-golden w-full sm:w-auto mt-2">
+                <button type="submit" id="submit-btn" class="btn-golden w-full sm:w-auto mt-2">
                   Submit
                 </button>
+                <!-- Status Message Container -->
+                <p id="form-status" class="text-sm mt-2 hidden"></p>
               </form>
             </div>
 
@@ -2635,18 +2650,23 @@
 
         // --- Offset Print View All Logic ---
         const viewAllBtnOffset = document.getElementById("view-all-btn-offset");
-        const viewLessBtnOffset = document.getElementById("view-less-btn-offset");
+        const viewLessBtnOffset = document.getElementById(
+          "view-less-btn-offset"
+        );
 
         if (viewAllBtnOffset && viewLessBtnOffset) {
           // View All Click -> Show products, Hide View All, Show View Less
           viewAllBtnOffset.addEventListener("click", function (e) {
             e.preventDefault();
 
-            const hiddenProducts = document.querySelectorAll(".hidden-product-offset");
+            const hiddenProducts = document.querySelectorAll(
+              ".hidden-product-offset"
+            );
             hiddenProducts.forEach((product) => {
               product.classList.remove("hidden");
             });
 
+            // Toggle buttons
             this.classList.add("hidden");
             this.classList.remove("inline-block");
 
@@ -2658,17 +2678,78 @@
           viewLessBtnOffset.addEventListener("click", function (e) {
             e.preventDefault();
 
-            const hiddenProducts = document.querySelectorAll(".hidden-product-offset");
+            // Hide products again
+            const hiddenProducts = document.querySelectorAll(
+              ".hidden-product-offset"
+            );
             hiddenProducts.forEach((product) => {
               product.classList.add("hidden");
             });
 
+            // Toggle buttons
             this.classList.add("hidden");
             this.classList.remove("inline-block");
 
             viewAllBtnOffset.classList.remove("hidden");
             viewAllBtnOffset.classList.add("inline-block");
           });
+        }
+
+        // --- Contact Form Submission Logic (AJAX/Fetch) ---
+        const contactForm = document.getElementById("contact-form");
+        const formStatus = document.getElementById("form-status");
+        const submitBtn = document.getElementById("submit-btn");
+
+        if (contactForm) {
+            contactForm.addEventListener("submit", async function (e) {
+                e.preventDefault();
+                
+                // Disable button while sending
+                submitBtn.disabled = true;
+                submitBtn.textContent = "Sending...";
+                formStatus.classList.add("hidden");
+                formStatus.classList.remove("text-green-600", "text-red-600");
+
+                // 1. Prepare Data
+                const formData = new FormData(contactForm);
+                
+                // 2. Send to Formspree (Replace YOUR_FORM_ID with your actual ID)
+                // Example: https://formspree.io/f/xpzvqjql
+                const formEndpoint = "https://formspree.io/f/YOUR_FORM_ID"; 
+
+                try {
+                    const response = await fetch(formEndpoint, {
+                        method: "POST",
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+
+                    if (response.ok) {
+                        formStatus.textContent = "Thanks! Your message has been sent.";
+                        formStatus.classList.add("text-green-600");
+                        formStatus.classList.remove("hidden");
+                        contactForm.reset();
+                    } else {
+                        const data = await response.json();
+                        if (Object.hasOwn(data, 'errors')) {
+                            formStatus.textContent = data["errors"].map(error => error["message"]).join(", ");
+                        } else {
+                            formStatus.textContent = "Oops! There was a problem submitting your form.";
+                        }
+                        formStatus.classList.add("text-red-600");
+                        formStatus.classList.remove("hidden");
+                    }
+                } catch (error) {
+                    formStatus.textContent = "Oops! There was a problem submitting your form.";
+                    formStatus.classList.add("text-red-600");
+                    formStatus.classList.remove("hidden");
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = "Submit";
+                }
+            });
         }
       });
     </script>
