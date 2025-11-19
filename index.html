@@ -31,7 +31,7 @@
         transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth easing for show/hide */
         will-change: transform; /* Optimize for animations */
       }
-      
+
       header.header-hidden {
         transform: translateY(-100%); /* Move header completely out of view */
       }
@@ -369,13 +369,50 @@
       }
 
       /* Image Collage Positions (Desktop) */
-      .img-1 { width: 42%; top: 0; left: 8%; aspect-ratio: 1/1; }
-      .img-2 { width: 28%; top: 28%; left: 2%; aspect-ratio: 2/3; }
-      .img-3 { width: 40%; top: 60%; left: 10%; aspect-ratio: 3/2; }
-      .img-4 { width: 230px; top: 8%; left: 26%; aspect-ratio: 3/4; z-index: 5; box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15); }
-      .img-5 { width: 38%; top: 6%; right: 4%; aspect-ratio: 3/2; }
-      .img-6 { width: 34%; top: 40%; right: 2%; aspect-ratio: 3/2; }
-      .img-7 { width: 28%; top: 64%; right: 8%; aspect-ratio: 3/2; }
+      .img-1 {
+        width: 42%;
+        top: 0;
+        left: 8%;
+        aspect-ratio: 1/1;
+      }
+      .img-2 {
+        width: 28%;
+        top: 28%;
+        left: 2%;
+        aspect-ratio: 2/3;
+      }
+      .img-3 {
+        width: 40%;
+        top: 60%;
+        left: 10%;
+        aspect-ratio: 3/2;
+      }
+      .img-4 {
+        width: 230px;
+        top: 8%;
+        left: 26%;
+        aspect-ratio: 3/4;
+        z-index: 5;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+      }
+      .img-5 {
+        width: 38%;
+        top: 6%;
+        right: 4%;
+        aspect-ratio: 3/2;
+      }
+      .img-6 {
+        width: 34%;
+        top: 40%;
+        right: 2%;
+        aspect-ratio: 3/2;
+      }
+      .img-7 {
+        width: 28%;
+        top: 64%;
+        right: 8%;
+        aspect-ratio: 3/2;
+      }
 
       .centered-img {
         position: absolute;
@@ -624,7 +661,10 @@
   </head>
   <body class="bg-white flex flex-col min-h-screen">
     <!-- Header: Fixed with z-50 to prevent overlap -->
-    <header id="main-header" class="w-full bg-white border-b border-gray-200 fixed top-0 left-0 z-50 transition-transform duration-300">
+    <header
+      id="main-header"
+      class="w-full bg-white border-b border-gray-200 fixed top-0 left-0 z-50 transition-transform duration-300"
+    >
       <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-20">
           <!-- Logo -->
@@ -697,7 +737,6 @@
 
     <!-- Main Content -->
     <main class="w-full flex-grow">
-      
       <!-- 1. Hero Section (Home Only) -->
       <div id="hero-section">
         <section
@@ -936,8 +975,18 @@
                 onclick="changeTab('digital')"
               >
                 <!-- Updated Digital Print Icon (Package/Box style) -->
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z"
+                  />
                 </svg>
                 <span class="text-xs font-semibold tracking-wider uppercase"
                   >DIGITAL PRINT</span
@@ -1020,8 +1069,18 @@
                 onclick="changeTab('finishing')"
               >
                 <!-- Updated Finishing Icon (Layers style) -->
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M6.429 9.75L2.25 12l4.179 2.25m0-4.5l5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-4.179 2.25m0 0L21.75 12l-4.179 2.25m0 0l4.179 2.25L12 21.75 2.25 16.5l4.179-2.25m11.142 0l-5.571 3-5.571-3" />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M6.429 9.75L2.25 12l4.179 2.25m0-4.5l5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-4.179 2.25m0 0L21.75 12l-4.179 2.25m0 0l4.179 2.25L12 21.75 2.25 16.5l4.179-2.25m11.142 0l-5.571 3-5.571-3"
+                  />
                 </svg>
                 <span class="text-xs font-semibold tracking-wider uppercase"
                   >FINISHING</span
@@ -2042,7 +2101,11 @@
                   ></textarea>
                 </div>
 
-                <button type="submit" id="submit-btn" class="btn-golden w-full sm:w-auto mt-2">
+                <button
+                  type="submit"
+                  id="submit-btn"
+                  class="btn-golden w-full sm:w-auto mt-2"
+                >
                   Submit
                 </button>
                 <!-- Status Message Container -->
@@ -2193,22 +2256,10 @@
             </p>
           </div>
 
-          <!-- Column 2: Service -->
-          <div>
-            <h4 class="font-heading text-lg font-semibold text-gray-900 mb-4">
-              Service
-            </h4>
-            <ul class="space-y-3">
-              <li><a href="#" class="text-sm footer-link">Design</a></li>
-              <li><a href="#" class="text-sm footer-link">Website</a></li>
-              <li><a href="#" class="text-sm footer-link">App</a></li>
-              <li><a href="#" class="text-sm footer-link">Seo</a></li>
-              <li><a href="#" class="text-sm footer-link">Marketing</a></li>
-            </ul>
-          </div>
+          <!-- Column 2: (Removed) -->
 
           <!-- Column 3: Company -->
-          <div>
+          <div class="md:col-span-2 text-center">
             <h4 class="font-heading text-lg font-semibold text-gray-900 mb-4">
               Company
             </h4>
@@ -2240,23 +2291,43 @@
             </ul>
           </div>
 
-          <!-- Column 4: Newsletter -->
+          <!-- Column 4: Contact via Email -->
           <div class="md:col-span-2">
             <h4 class="font-heading text-lg font-semibold text-gray-900 mb-4">
-              Join a Newsletter
+              Drop your email
             </h4>
-            <p class="text-sm text-gray-600 mb-2">Your Email</p>
-            <form action="#" class="flex items-center gap-2" id="newsletter-form">
+            <p class="text-sm text-gray-600 mb-2">
+              Drop your email — we’ll contact you.
+            </p>
+            <form
+              action="#"
+              class="flex items-center gap-2"
+              id="newsletter-form"
+            >
+              <label for="newsletter-email" class="sr-only"
+                >Email address</label
+              >
               <input
+                id="newsletter-email"
                 type="email"
                 name="email"
-                placeholder="Enter Your Email"
+                placeholder="your@email.com"
                 class="newsletter-input flex-grow"
                 required
               />
-              <button type="submit" id="newsletter-submit-btn" class="btn-footer-submit">Submit</button>
+              <button
+                type="submit"
+                id="newsletter-submit-btn"
+                class="btn-footer-submit"
+              >
+                Send
+              </button>
             </form>
-            <p id="newsletter-status" class="text-sm mt-2 hidden"></p>
+            <p
+              id="newsletter-status"
+              class="text-sm mt-2 hidden"
+              aria-live="polite"
+            ></p>
           </div>
         </div>
 
@@ -2315,46 +2386,48 @@
     <script>
       // Sticky Header Logic
       let lastScrollTop = 0;
-      const header = document.getElementById('main-header');
+      const header = document.getElementById("main-header");
       let scrollTimeout;
 
-      window.addEventListener('scroll', () => {
-          const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      window.addEventListener("scroll", () => {
+        const scrollTop =
+          window.pageYOffset || document.documentElement.scrollTop;
 
-          // Clear previous timeout on every scroll event
-          clearTimeout(scrollTimeout);
+        // Clear previous timeout on every scroll event
+        clearTimeout(scrollTimeout);
 
-          if (scrollTop > lastScrollTop && scrollTop > 80) {
-              // SCROLL DOWN: Hide immediately
-              header.classList.add('header-hidden');
-          } else {
-              // SCROLL UP: Show immediately
-              header.classList.remove('header-hidden');
-              
-              // If not at the very top, hide after 2 seconds of no scrolling
-              if (scrollTop > 80) {
-                  scrollTimeout = setTimeout(() => {
-                      header.classList.add('header-hidden');
-                  }, 2000);
-              }
+        if (scrollTop > lastScrollTop && scrollTop > 80) {
+          // SCROLL DOWN: Hide immediately
+          header.classList.add("header-hidden");
+        } else {
+          // SCROLL UP: Show immediately
+          header.classList.remove("header-hidden");
+
+          // If not at the very top, hide after 2 seconds of no scrolling
+          if (scrollTop > 80) {
+            scrollTimeout = setTimeout(() => {
+              header.classList.add("header-hidden");
+            }, 2000);
           }
-          
-          lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        }
+
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
       });
 
       // Keep header visible if hovering
-      header.addEventListener('mouseenter', () => {
-          clearTimeout(scrollTimeout);
-          header.classList.remove('header-hidden');
+      header.addEventListener("mouseenter", () => {
+        clearTimeout(scrollTimeout);
+        header.classList.remove("header-hidden");
       });
-      
-      header.addEventListener('mouseleave', () => {
-           const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-           if (scrollTop > 80) {
-               scrollTimeout = setTimeout(() => {
-                  header.classList.add('header-hidden');
-              }, 2000);
-           }
+
+      header.addEventListener("mouseleave", () => {
+        const scrollTop =
+          window.pageYOffset || document.documentElement.scrollTop;
+        if (scrollTop > 80) {
+          scrollTimeout = setTimeout(() => {
+            header.classList.add("header-hidden");
+          }, 2000);
+        }
       });
 
       // Single Page App Navigation Logic
@@ -2378,20 +2451,19 @@
           productsSection.classList.add("hidden");
           reviewsGroup.classList.add("hidden");
           ctaSection.classList.add("hidden");
-          
+
           contactSection.classList.remove("hidden");
 
           // Update Active State
           navHome.classList.remove("active");
           navProducts.classList.remove("active");
           navContact.classList.add("active");
-        } 
-        else if (pageName === "products") {
+        } else if (pageName === "products") {
           // PRODUCTS PAGE: Show Products + CTA only
           homeSection.classList.add("hidden");
           reviewsGroup.classList.add("hidden");
           contactSection.classList.add("hidden");
-          
+
           productsSection.classList.remove("hidden");
           ctaSection.classList.remove("hidden");
 
@@ -2399,11 +2471,10 @@
           navHome.classList.remove("active");
           navContact.classList.remove("active");
           navProducts.classList.add("active");
-        } 
-        else {
+        } else {
           // HOME PAGE: Show everything except Contact
           contactSection.classList.add("hidden");
-          
+
           homeSection.classList.remove("hidden");
           productsSection.classList.remove("hidden");
           reviewsGroup.classList.remove("hidden");
@@ -2566,116 +2637,123 @@
         const submitBtn = document.getElementById("submit-btn");
 
         if (contactForm) {
-            contactForm.addEventListener("submit", async function (e) {
-                e.preventDefault();
-                
-                // Disable button while sending
-                submitBtn.disabled = true;
-                submitBtn.textContent = "Sending...";
-                formStatus.classList.add("hidden");
-                formStatus.classList.remove("text-green-600", "text-red-600");
+          contactForm.addEventListener("submit", async function (e) {
+            e.preventDefault();
 
-                // 1. Prepare Data
-                const formData = new FormData(contactForm);
-                
-                // 2. Send to Formspree (Replace YOUR_FORM_ID with your actual ID)
-                // Example: https://formspree.io/f/xpzvqjql
-                const formEndpoint = "https://formspree.io/f/YOUR_FORM_ID"; 
+            // Disable button while sending
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Sending...";
+            formStatus.classList.add("hidden");
+            formStatus.classList.remove("text-green-600", "text-red-600");
 
-                try {
-                    const response = await fetch(formEndpoint, {
-                        method: "POST",
-                        body: formData,
-                        headers: {
-                            'Accept': 'application/json'
-                        }
-                    });
+            // 1. Prepare Data
+            const formData = new FormData(contactForm);
 
-                    if (response.ok) {
-                        formStatus.textContent = "Thanks! Your message has been sent.";
-                        formStatus.classList.add("text-green-600");
-                        formStatus.classList.remove("hidden");
-                        contactForm.reset();
-                    } else {
-                        const data = await response.json();
-                        if (Object.hasOwn(data, 'errors')) {
-                            formStatus.textContent = data["errors"].map(error => error["message"]).join(", ");
-                        } else {
-                            formStatus.textContent = "Oops! There was a problem submitting your form.";
-                        }
-                        formStatus.classList.add("text-red-600");
-                        formStatus.classList.remove("hidden");
-                    }
-                } catch (error) {
-                    formStatus.textContent = "Oops! There was a problem submitting your form.";
-                    formStatus.classList.add("text-red-600");
-                    formStatus.classList.remove("hidden");
-                } finally {
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = "Submit";
+            // 2. Send to Formspree (Replace YOUR_FORM_ID with your actual ID)
+            // Example: https://formspree.io/f/xpzvqjql
+            const formEndpoint = "https://formspree.io/f/YOUR_FORM_ID";
+
+            try {
+              const response = await fetch(formEndpoint, {
+                method: "POST",
+                body: formData,
+                headers: {
+                  Accept: "application/json",
+                },
+              });
+
+              if (response.ok) {
+                formStatus.textContent = "Thanks! Your message has been sent.";
+                formStatus.classList.add("text-green-600");
+                formStatus.classList.remove("hidden");
+                contactForm.reset();
+              } else {
+                const data = await response.json();
+                if (Object.hasOwn(data, "errors")) {
+                  formStatus.textContent = data["errors"]
+                    .map((error) => error["message"])
+                    .join(", ");
+                } else {
+                  formStatus.textContent =
+                    "Oops! There was a problem submitting your form.";
                 }
-            });
+                formStatus.classList.add("text-red-600");
+                formStatus.classList.remove("hidden");
+              }
+            } catch (error) {
+              formStatus.textContent =
+                "Oops! There was a problem submitting your form.";
+              formStatus.classList.add("text-red-600");
+              formStatus.classList.remove("hidden");
+            } finally {
+              submitBtn.disabled = false;
+              submitBtn.textContent = "Submit";
+            }
+          });
         }
 
         // --- Newsletter Form Submission Logic (AJAX/Fetch) ---
         const newsletterForm = document.getElementById("newsletter-form");
         const newsletterStatus = document.getElementById("newsletter-status");
-        const newsletterSubmitBtn = document.getElementById("newsletter-submit-btn");
+        const newsletterSubmitBtn = document.getElementById(
+          "newsletter-submit-btn"
+        );
 
         if (newsletterForm) {
-            newsletterForm.addEventListener("submit", async function (e) {
-                e.preventDefault();
-                
-                // Disable button while sending
-                newsletterSubmitBtn.disabled = true;
-                newsletterSubmitBtn.textContent = "...";
-                newsletterStatus.classList.add("hidden");
-                newsletterStatus.classList.remove("text-green-600", "text-red-600");
+          newsletterForm.addEventListener("submit", async function (e) {
+            e.preventDefault();
 
-                // 1. Prepare Data
-                const formData = new FormData(newsletterForm);
-                // Add a hidden field to identify source if using same form ID
-                formData.append("source", "Footer Newsletter"); 
-                
-                // 2. Send to Formspree (Using same endpoint as contact form for simplicity)
-                // Replace YOUR_FORM_ID with your actual ID
-                const formEndpoint = "https://formspree.io/f/YOUR_FORM_ID"; 
+            // Disable button while sending
+            newsletterSubmitBtn.disabled = true;
+            newsletterSubmitBtn.textContent = "...";
+            newsletterStatus.classList.add("hidden");
+            newsletterStatus.classList.remove("text-green-600", "text-red-600");
 
-                try {
-                    const response = await fetch(formEndpoint, {
-                        method: "POST",
-                        body: formData,
-                        headers: {
-                            'Accept': 'application/json'
-                        }
-                    });
+            // 1. Prepare Data
+            const formData = new FormData(newsletterForm);
+            // Add a hidden field to identify source if using same form ID
+            formData.append("source", "Footer Newsletter");
 
-                    if (response.ok) {
-                        newsletterStatus.textContent = "Subscribed!";
-                        newsletterStatus.classList.add("text-green-600");
-                        newsletterStatus.classList.remove("hidden");
-                        newsletterForm.reset();
-                    } else {
-                        const data = await response.json();
-                        if (Object.hasOwn(data, 'errors')) {
-                            newsletterStatus.textContent = "Error: " + data["errors"].map(error => error["message"]).join(", ");
-                        } else {
-                            newsletterStatus.textContent = "Oops! Error.";
-                        }
-                        newsletterStatus.classList.add("text-red-600");
-                        newsletterStatus.classList.remove("hidden");
-                    }
-                } catch (error) {
-                    newsletterStatus.textContent = "Oops! Network error.";
-                    newsletterStatus.classList.add("text-red-600");
-                    newsletterStatus.classList.remove("hidden");
-                } finally {
-                    newsletterSubmitBtn.disabled = false;
-                    newsletterSubmitBtn.textContent = "Submit";
+            // 2. Send to Formspree (Using same endpoint as contact form for simplicity)
+            // Replace YOUR_FORM_ID with your actual ID
+            const formEndpoint = "https://formspree.io/f/YOUR_FORM_ID";
+
+            try {
+              const response = await fetch(formEndpoint, {
+                method: "POST",
+                body: formData,
+                headers: {
+                  Accept: "application/json",
+                },
+              });
+
+              if (response.ok) {
+                newsletterStatus.textContent = "Subscribed!";
+                newsletterStatus.classList.add("text-green-600");
+                newsletterStatus.classList.remove("hidden");
+                newsletterForm.reset();
+              } else {
+                const data = await response.json();
+                if (Object.hasOwn(data, "errors")) {
+                  newsletterStatus.textContent =
+                    "Error: " +
+                    data["errors"].map((error) => error["message"]).join(", ");
+                } else {
+                  newsletterStatus.textContent = "Oops! Error.";
                 }
-            });
+                newsletterStatus.classList.add("text-red-600");
+                newsletterStatus.classList.remove("hidden");
+              }
+            } catch (error) {
+              newsletterStatus.textContent = "Oops! Network error.";
+              newsletterStatus.classList.add("text-red-600");
+              newsletterStatus.classList.remove("hidden");
+            } finally {
+              newsletterSubmitBtn.disabled = false;
+              newsletterSubmitBtn.textContent = "Submit";
+            }
+          });
         }
-
       });
     </script>
   </body>
