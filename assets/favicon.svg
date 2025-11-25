@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="faviconTitle">
+  <title id="faviconTitle">Inkkspire Printz</title>
+  <!-- Larger canvas so the mark appears bigger at favicon sizes -->
+  <rect width="256" height="256" rx="28" fill="#fde047"/>
+  <!-- Centered letter, enlarged to occupy most of the canvas.
+       Wrapped in a translated group for consistent centering across renderers. -->
+  <g transform="translate(128 128)">
+    <text x="0" y="0" font-family="Playfair Display, serif" font-weight="700" font-size="200" fill="#111827" text-anchor="middle" dominant-baseline="central">I</text>
+  </g>
+</svg>
